@@ -31,5 +31,8 @@ instance DataSourceName Foo where
 
 instance DataSource a Foo where
    fetch _ _ _ blockedFetches = SyncFetch $ do
-      for_ blockedFetches $ \(BlockedFetch Foo r) -> do
-         pure ()
+      for_ blockedFetches go
+        where
+        go :: BlockedFetch Foo -> IO ()
+        go = \(BlockedFetch Foo r) -> do
+           pure ()
