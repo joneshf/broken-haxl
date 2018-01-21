@@ -10,4 +10,4 @@ main = do
 
 newtype Foo a
   = Foo (GenHaxl () (Identity a))
-  deriving (Functor)
+  deriving (Applicative)
